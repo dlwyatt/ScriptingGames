@@ -1,0 +1,831 @@
+**********************
+Windows PowerShell transcript start
+Start time: 20140201083258
+Username  : TESTDOMAIN\dlwyatt 
+Machine	  : WIN2012VM (Microsoft Windows NT 6.2.9200.0) 
+**********************
+Transcript started, output file is .\Transcript.txt
+
+PS C:\temp\ScriptingGamesEvent2> Get-Command .\UploadSecurityFootprint.ps1 -Syntax
+
+UploadSecurityFootprint.ps1 -CertificateThumbprint <string[]> -UploadPath <string> [-LogFile <string>] [-FilePaths 
+<string[]>] [-FileHash] [-FileRecurse] [-FileForce] [<CommonParameters>]
+
+UploadSecurityFootprint.ps1 -CertificateThumbprint <string[]> -UploadPath <string> [-LogFile <string>] [-Folder] 
+[-File] [-Share] [-Process] [-Service] [-Environment] [-Registry] [-InstalledSoftware] [-FilePaths <string[]>] 
+[-FileHash] [-FileRecurse] [-FileForce] [<CommonParameters>]
+
+PS C:\temp\ScriptingGamesEvent2> dir Cert:\CurrentUser -Recurse | ? { $_.PrivateKey }
+
+
+    Directory: Microsoft.PowerShell.Security\Certificate::CurrentUser\Root
+
+
+Thumbprint                                Subject                                                                      
+----------                                -------                                                                      
+F6304D325FAEA2F842725E4073004A70D8F3739B  CN=WMSvc-WIN2012VM                                                           
+25DEB7B1C9CCAC3A459F11177171D545053522CD  CN=Win2012VM                                                                 
+
+
+    Directory: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
+
+
+Thumbprint                                Subject                                                                      
+----------                                -------                                                                      
+B210C54BF75E201BA77A55A0A023B3AE12CD26FA  CN=Dave Wyatt, OU=UserAccounts, DC=testdomain, DC=local                      
+
+
+PS C:\temp\ScriptingGamesEvent2> Write-Host 'Demonstrating the ability to individually collect certain subsets of data, and some error output when you specify -File without any paths.'
+
+Demonstrating the ability to individually collect certain subsets of data, and some error output when you specify -File without any paths.
+
+PS C:\temp\ScriptingGamesEvent2> .\UploadSecurityFootprint.ps1 -File -Registry -Verbose -CertificateThumbprint B210C54BF75E201BA77A55A0A023B3AE12CD26FA -UploadPath \\win2008vm\c$\temp
+
+VERBOSE: Loading script dependencies.
+VERBOSE: Loading module from path 'C:\temp\ScriptingGamesEvent2\Event2.psm1'.
+VERBOSE: Importing function 'Compress-Folder'.
+VERBOSE: Importing function 'Get-EnvironmentVariableData'.
+VERBOSE: Importing function 'Get-FileData'.
+VERBOSE: Importing function 'Get-FolderData'.
+VERBOSE: Importing function 'Get-InnerException'.
+VERBOSE: Importing function 'Get-InstalledSoftwareData'.
+VERBOSE: Importing function 'Get-ProcessData'.
+VERBOSE: Importing function 'Get-RegistryData'.
+VERBOSE: Importing function 'Get-ServiceData'.
+VERBOSE: Importing function 'Get-SharedFolderData'.
+VERBOSE: Importing function 'New-TempFolder'.
+VERBOSE: Importing function 'Protect-File'.
+VERBOSE: Importing function 'Unprotect-File'.
+VERBOSE: Creating temporary folder.
+VERBOSE: XML files will be temporarily stored in folder 'C:\Users\dlwyatt\AppData\Local\Temp\fg32gktz.xs3'
+
+C:\temp\ScriptingGamesEvent2\UploadSecurityFootprint.ps1 : The File collection option was requested, but no values
+were passed to the FilePaths parameter.  No file information will be collected.
+At line:1 char:1
++ .\UploadSecurityFootprint.ps1 -File -Registry -Verbose -CertificateThumbprint B2 ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException
+    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,UploadSecurityFootprint.ps1
+ 
+VERBOSE: Starting activity 'Collect registry information'...
+VERBOSE: Activity 'Collect registry information' complete.
+VERBOSE: Compressing, encrypting and uploading results...
+VERBOSE: Unencrypted zip file will be temporarily stored at 'C:\Users\dlwyatt\AppData\Local\Temp\tmp76CF.tmp'.
+VERBOSE: Local copy of encrypted bin file will be temporarily stored at 
+'C:\Users\dlwyatt\AppData\Local\Temp\tmp76D0.tmp'.
+VERBOSE: Encrypted results successfully uploaded to 
+'\\win2008vm\c$\temp\WIN2012VM-SecurityFootprint-2014_02_01_08_34_57.bin'.
+VERBOSE: Cleaning up local temp files.
+
+PS C:\temp\ScriptingGamesEvent2> write-host 'Making sure temp files were cleaned up (no sensitive data left lying around)'
+
+Making sure temp files were cleaned up (no sensitive data left lying around)
+
+PS C:\temp\ScriptingGamesEvent2> dir $env:temp\fg32gktz.xs3
+
+dir : Cannot find path 'C:\Users\dlwyatt\AppData\Local\Temp\fg32gktz.xs3' because it does not exist.
+At line:1 char:1
++ dir $env:temp\fg32gktz.xs3
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\dlwyat...mp\fg32gktz.xs3:String) [Get-ChildItem], ItemNotFound 
+   Exception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetChildItemCommand
+ 
+PS C:\temp\ScriptingGamesEvent2> dir $env:temp\tmp76CF.tmp
+
+dir : Cannot find path 'C:\Users\dlwyatt\AppData\Local\Temp\tmp76CF.tmp' because it does not exist.
+At line:1 char:1
++ dir $env:temp\tmp76CF.tmp
++ ~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\dlwyat...emp\tmp76CF.tmp:String) [Get-ChildItem], ItemNotFound 
+   Exception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetChildItemCommand
+ 
+PS C:\temp\ScriptingGamesEvent2> dir $env:temp\tmp76d0.tmp
+
+dir : Cannot find path 'C:\Users\dlwyatt\AppData\Local\Temp\tmp76d0.tmp' because it does not exist.
+At line:1 char:1
++ dir $env:temp\tmp76d0.tmp
++ ~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\dlwyat...emp\tmp76d0.tmp:String) [Get-ChildItem], ItemNotFound 
+   Exception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetChildItemCommand
+ 
+PS C:\temp\ScriptingGamesEvent2> dir \\win2008vm\c$\temp
+
+
+    Directory: \\win2008vm\c$\temp
+
+
+Mode                LastWriteTime     Length Name                                                                      
+----                -------------     ------ ----                                                                      
+-a---          2/1/2014   7:49 AM       3588 mycert.pfx                                                                
+-a---          2/1/2014   8:34 AM       1006 WIN2012VM-SecurityFootprint-2014_02_01_08_34_57.bin                       
+
+PS C:\temp\ScriptingGamesEvent2> write-host 'Demonstrating a full collection, including log file output'
+
+Demonstrating a full collection, including log file output
+
+PS C:\temp\ScriptingGamesEvent2> .\UploadSecurityFootprint.ps1 -Verbose -CertificateThumbprint B210C54BF75E201BA77A55A0A023B3AE12CD26FA -UploadPath \\win2008vm\c$\temp -FileHash -FilePaths 'c:\windows\system32' -Debug -LogFile '.\UploadSecurityFootprint.log'
+
+VERBOSE: Loading script dependencies.
+VERBOSE: Importing function 'Compress-Folder'.
+VERBOSE: Importing function 'Get-EnvironmentVariableData'.
+VERBOSE: Importing function 'Get-FileData'.
+VERBOSE: Importing function 'Get-FolderData'.
+VERBOSE: Importing function 'Get-InnerException'.
+VERBOSE: Importing function 'Get-InstalledSoftwareData'.
+VERBOSE: Importing function 'Get-ProcessData'.
+VERBOSE: Importing function 'Get-RegistryData'.
+VERBOSE: Importing function 'Get-ServiceData'.
+VERBOSE: Importing function 'Get-SharedFolderData'.
+VERBOSE: Importing function 'New-TempFolder'.
+VERBOSE: Importing function 'Protect-File'.
+VERBOSE: Importing function 'Unprotect-File'.
+VERBOSE: Creating temporary folder.
+VERBOSE: XML files will be temporarily stored in folder 'C:\Users\dlwyatt\AppData\Local\Temp\qnxw2yo2.hqa'
+VERBOSE: Starting activity 'Collect folder information'...
+VERBOSE: Activity 'Collect folder information' complete.
+VERBOSE: Starting activity 'Collect file information'...
+VERBOSE: Activity 'Collect file information' complete.
+VERBOSE: Starting activity 'Collect shared folder information'...
+VERBOSE: Activity 'Collect shared folder information' complete.
+VERBOSE: Starting activity 'Collect running process information'...
+VERBOSE: Activity 'Collect running process information' complete.
+VERBOSE: Starting activity 'Collect Windows service information'...
+VERBOSE: Activity 'Collect Windows service information' complete.
+VERBOSE: Starting activity 'Collect environment variables'...
+VERBOSE: Activity 'Collect environment variables' complete.
+VERBOSE: Starting activity 'Collect registry information'...
+VERBOSE: Activity 'Collect registry information' complete.
+VERBOSE: Starting activity 'Collect list of installed software'...
+VERBOSE: Activity 'Collect list of installed software' complete.
+VERBOSE: Compressing, encrypting and uploading results...
+VERBOSE: Unencrypted zip file will be temporarily stored at 'C:\Users\dlwyatt\AppData\Local\Temp\tmp8FC0.tmp'.
+VERBOSE: Local copy of encrypted bin file will be temporarily stored at 
+'C:\Users\dlwyatt\AppData\Local\Temp\tmp8FC1.tmp'.
+DEBUG: 
+  Original XML files size        : 20294150
+  Compressed file size           : 1122057
+  Encrypted file size            : 1122622
+
+Confirm
+Continue with this operation?
+[Y] Yes  [A] Yes to All  [H] Halt Command  [S] Suspend  [?] Help (default is "Y"): y
+
+VERBOSE: Encrypted results successfully uploaded to 
+'\\win2008vm\c$\temp\WIN2012VM-SecurityFootprint-2014_02_01_09_45_12.bin'.
+VERBOSE: Cleaning up local temp files.
+
+PS C:\temp\ScriptingGamesEvent2> dir \\win2008vm\c$\temp\
+
+
+    Directory: \\win2008vm\c$\temp
+
+
+Mode                LastWriteTime     Length Name                                                                      
+----                -------------     ------ ----                                                                      
+-a---          2/1/2014   7:49 AM       3588 mycert.pfx                                                                
+-a---          2/1/2014   8:34 AM       1006 WIN2012VM-SecurityFootprint-2014_02_01_08_34_57.bin                       
+-a---          2/1/2014   9:44 AM    1122622 WIN2012VM-SecurityFootprint-2014_02_01_09_45_12.bin                       
+
+
+PS C:\temp\ScriptingGamesEvent2> write-host 'Win2008VM does not have PowerShell 4.0 installed, so I''ll do the decryption here.'
+
+Win2008VM does not have PowerShell 4.0 installed, so I'll do the decryption here.
+
+PS C:\temp\ScriptingGamesEvent2> copy '\\win2008vm\c$\temp\WIN2012VM-SecurityFootprint-2014_02_01_09_45_12.bin' .
+PS C:\temp\ScriptingGamesEvent2> dir
+
+
+    Directory: C:\temp\ScriptingGamesEvent2
+
+
+Mode                LastWriteTime     Length Name                                                                      
+----                -------------     ------ ----                                                                      
+da---          2/1/2014   8:09 AM            PSLogging                                                                 
+-a---         1/31/2014  10:37 PM      43398 Event2.psm1                                                               
+-a---          2/1/2014   9:46 AM      24768 Transcript.txt                                                            
+-a---          2/1/2014   9:45 AM       3587 UploadSecurityFootprint.log                                               
+-a---          2/1/2014   8:31 AM      12432 UploadSecurityFootprint.ps1                                               
+-a---          2/1/2014   9:44 AM    1122622 WIN2012VM-SecurityFootprint-2014_02_01_09_45_12.bin                       
+
+
+PS C:\temp\ScriptingGamesEvent2> dir Cert:\CurrentUser -Recurse | ? { $_.PrivateKey }
+
+
+    Directory: Microsoft.PowerShell.Security\Certificate::CurrentUser\Root
+
+
+Thumbprint                                Subject                                                                      
+----------                                -------                                                                      
+F6304D325FAEA2F842725E4073004A70D8F3739B  CN=WMSvc-WIN2012VM                                                           
+25DEB7B1C9CCAC3A459F11177171D545053522CD  CN=Win2012VM                                                                 
+
+
+    Directory: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
+
+
+Thumbprint                                Subject                                                                      
+----------                                -------                                                                      
+B210C54BF75E201BA77A55A0A023B3AE12CD26FA  CN=Dave Wyatt, OU=UserAccounts, DC=testdomain, DC=local                      
+
+PS C:\temp\ScriptingGamesEvent2> Write-Host 'Demonstrating trying to decrypt the file with the wrong certificate.'
+
+Demonstrating trying to decrypt the file with the wrong certificate.
+
+PS C:\temp\ScriptingGamesEvent2> Unprotect-File -FilePath .\WIN2012VM-SecurityFootprint-2014_02_01_09_45_12.bin -OutputFile .\decrypted.zip -CertificateThumbprint 25DEB7B1C9CCAC3A459F11177171D545053522CD
+
+No key protected with certificate '25DEB7B1C9CCAC3A459F11177171D545053522CD' was found in protected file 
+'.\WIN2012VM-SecurityFootprint-2014_02_01_09_45_12.bin'
+At C:\temp\ScriptingGamesEvent2\Event2.psm1:765 char:13
++             throw "No key protected with certificate '$CertificateThumbprint' wa ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (No key protecte...1_09_45_12.bin':String) [], RuntimeException
+    + FullyQualifiedErrorId : No key protected with certificate '25DEB7B1C9CCAC3A459F11177171D545053522CD' was found i 
+   n protected file '.\WIN2012VM-SecurityFootprint-2014_02_01_09_45_12.bin'
+ 
+PS C:\temp\ScriptingGamesEvent2> Write-Host 'Demonstrating trying to decrypt with a certificate that has no usable private key'
+
+Demonstrating trying to decrypt with a certificate that has no usable private key
+
+PS C:\temp\ScriptingGamesEvent2> dir Cert:\CurrentUser\My | ? { -not $_.PrivateKey }
+
+
+    Directory: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
+
+
+Thumbprint                                Subject                                                                      
+----------                                -------                                                                      
+B70C1FBD2C76F8772124A0F89D6C67B9CA626F8F  E=dlwyatt115@gmail.com, CN=Dave Wyatt, OU=UserAccounts, DC=testdomain, DC=...
+69B260330B0826280C19F2E003D33154738449B5  E=dlwyatt115@gmail.com, CN=Dave Wyatt, OU=UserAccounts, DC=testdomain, DC=...
+1028EECC8CFADCAECDA94CA9E97F884377A2BABE  CN=testdomain-WIN2012VM-CA, DC=testdomain, DC=local                          
+
+
+PS C:\temp\ScriptingGamesEvent2> Unprotect-File -FilePath .\WIN2012VM-SecurityFootprint-2014_02_01_09_45_12.bin -OutputFile .\decrypted.zip -CertificateThumbprint 69B260330B0826280C19F2E003D33154738449B5
+
+No valid RSA certificate with thumbprint '69B260330B0826280C19F2E003D33154738449B5' with a private key was found in 
+the current user's store.
+At C:\temp\ScriptingGamesEvent2\Event2.psm1:696 char:13
++             throw "No valid RSA certificate with thumbprint '$CertificateThumbpr ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (No valid RSA ce...t user's store.:String) [], RuntimeException
+    + FullyQualifiedErrorId : No valid RSA certificate with thumbprint '69B260330B0826280C19F2E003D33154738449B5' with 
+    a private key was found in the current user's store.
+ 
+
+
+PS C:\temp\ScriptingGamesEvent2> Write-Host 'Demonstrating decryption by the authorized certificate'
+
+Demonstrating decryption by the authorized certificate
+
+PS C:\temp\ScriptingGamesEvent2> Unprotect-File -FilePath .\WIN2012VM-SecurityFootprint-2014_02_01_09_45_12.bin -OutputFile .\decrypted.zip -CertificateThumbprint B210C54BF75E201BA77A55A0A023B3AE12CD26FA
+PS C:\temp\ScriptingGamesEvent2> dir
+
+
+    Directory: C:\temp\ScriptingGamesEvent2
+
+
+Mode                LastWriteTime     Length Name                                                                      
+----                -------------     ------ ----                                                                      
+da---          2/1/2014   8:09 AM            PSLogging                                                                 
+-a---          2/1/2014   9:46 AM    1122057 decrypted.zip                                                             
+-a---         1/31/2014  10:37 PM      43398 Event2.psm1                                                               
+-a---          2/1/2014   9:46 AM      29512 Transcript.txt                                                            
+-a---          2/1/2014   9:45 AM       3587 UploadSecurityFootprint.log                                               
+-a---          2/1/2014   8:31 AM      12432 UploadSecurityFootprint.ps1                                               
+-a---          2/1/2014   9:44 AM    1122622 WIN2012VM-SecurityFootprint-2014_02_01_09_45_12.bin                       
+
+
+PS C:\temp\ScriptingGamesEvent2> [System.IO.Compression.ZipFile]::ExtractToDirectory
+
+OverloadDefinitions                                                                                                    
+-------------------                                                                                                    
+static void ExtractToDirectory(string sourceArchiveFileName, string destinationDirectoryName)                          
+static void ExtractToDirectory(string sourceArchiveFileName, string destinationDirectoryName, System.Text.Encoding     
+entryNameEncoding)                                                                                                     
+                                                                                                                       
+
+
+PS C:\temp\ScriptingGamesEvent2> [System.IO.Compression.ZipFile]::ExtractToDirectory("$pwd\decrypted.zip", "$pwd\Decrypted")
+PS C:\temp\ScriptingGamesEvent2> dir
+
+
+    Directory: C:\temp\ScriptingGamesEvent2
+
+
+Mode                LastWriteTime     Length Name                                                                      
+----                -------------     ------ ----                                                                      
+d----          2/1/2014   9:47 AM            Decrypted                                                                 
+da---          2/1/2014   8:09 AM            PSLogging                                                                 
+-a---          2/1/2014   9:46 AM    1122057 decrypted.zip                                                             
+-a---         1/31/2014  10:37 PM      43398 Event2.psm1                                                               
+-a---          2/1/2014   9:47 AM      33768 Transcript.txt                                                            
+-a---          2/1/2014   9:45 AM       3587 UploadSecurityFootprint.log                                               
+-a---          2/1/2014   8:31 AM      12432 UploadSecurityFootprint.ps1                                               
+-a---          2/1/2014   9:44 AM    1122622 WIN2012VM-SecurityFootprint-2014_02_01_09_45_12.bin                       
+
+
+PS C:\temp\ScriptingGamesEvent2> dir .\Decrypted
+
+
+    Directory: C:\temp\ScriptingGamesEvent2\Decrypted
+
+
+Mode                LastWriteTime     Length Name                                                                      
+----                -------------     ------ ----                                                                      
+-a---          2/1/2014   9:44 AM       2962 EnvironmentVariables.xml                                                  
+-a---          2/1/2014   9:44 AM    2084396 FileInfo.xml                                                              
+-a---          2/1/2014   9:44 AM   18023314 FolderInfo.xml                                                            
+-a---          2/1/2014   9:44 AM      78218 InstalledSoftware.xml                                                     
+-a---          2/1/2014   9:44 AM      38900 ProcessInfo.xml                                                           
+-a---          2/1/2014   9:44 AM        784 RegistryInfo.xml                                                          
+-a---          2/1/2014   9:44 AM      56890 ServiceInfo.xml                                                           
+-a---          2/1/2014   9:44 AM       8686 SharedFolderInfo.xml                                                      
+
+
+PS C:\temp\ScriptingGamesEvent2> Write-Host 'All XML files were generated with Export-CliXml; they can simply be re-imported to examine the data later.'
+
+All XML files were generated with Export-CliXml; they can simply be re-imported to examine the data later.
+
+PS C:\temp\ScriptingGamesEvent2> $environment = Import-Clixml .\Decrypted\EnvironmentVariables.xml
+PS C:\temp\ScriptingGamesEvent2> $environment
+
+
+PROCESSOR_REVISION          : 2d07
+Path                        : C:\Program Files\Microsoft\Exchange Server\V15\Bin\Search\Ceres\Installer\bin\; ;C:\Windo
+                              ws\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.
+                              0\;C:\Program Files\Microsoft\Exchange Server\V15\bin;C:\Program 
+                              Files\Microsoft\Exchange Server\V15\Bin\Search\Ceres\Native\
+TMP                         : C:\Windows\TEMP
+PROCESSOR_LEVEL             : 6
+USERNAME                    : SYSTEM
+CERES_REGISTRY_PRODUCT_NAME : Search Foundation for Exchange
+TEMP                        : C:\Windows\TEMP
+PATHEXT                     : .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+ComSpec                     : C:\Windows\system32\cmd.exe
+ExchangeInstallPath         : C:\Program Files\Microsoft\Exchange Server\V15\
+PSModulePath                : C:\Windows\system32\WindowsPowerShell\v1.0\Modules\;C:\Program 
+                              Files\WindowsPowerShell\Modules\
+windir                      : C:\Windows
+NUMBER_OF_PROCESSORS        : 4
+PROCESSOR_ARCHITECTURE      : AMD64
+FP_NO_HOST_CHECK            : NO
+PROCESSOR_IDENTIFIER        : Intel64 Family 6 Model 45 Stepping 7, GenuineIntel
+OS                          : Windows_NT
+
+
+
+PS C:\temp\ScriptingGamesEvent2> $fileinfo = Import-Clixml .\Decrypted\FileInfo.xml
+PS C:\temp\ScriptingGamesEvent2> $fileInfo | select -first 10 | fl *
+
+
+Hash          : 0E5FB8EF34FBEFD08531307BB7CCDEBD5FF2A3250A54E9A7D4CFD5CF1C9A71BE
+FullName      : C:\windows\system32\@OpenWithToastLogo.png
+ErrorMessage  : 
+LastWriteTime : 6/2/2012 10:31:19 AM
+Length        : 160
+
+Hash          : F20C55036F88DB6555A2E89A782B3C71820C77C43377718F4FB81F98E5057E59
+FullName      : C:\windows\system32\aaclient.dll
+ErrorMessage  : 
+LastWriteTime : 7/25/2012 11:04:59 PM
+Length        : 322560
+
+Hash          : D21DA151E1E1231C060BD0C84D76302D38FE48C642204721BC9691A8915CE5C6
+FullName      : C:\windows\system32\accessibilitycpl.dll
+ErrorMessage  : 
+LastWriteTime : 7/25/2012 11:05:00 PM
+Length        : 3839488
+
+Hash          : 0FDE04DE2C953541F60AB75D5C65741BE3A59C6477A45FF71840EE11100040CE
+FullName      : C:\windows\system32\ACCTRES.dll
+ErrorMessage  : 
+LastWriteTime : 7/25/2012 10:35:30 PM
+Length        : 39424
+
+Hash          : 862AD86744FE9D8A4C47477BE63D036676700ABD1852C88674F3E3F4F45A4ECE
+FullName      : C:\windows\system32\acledit.dll
+ErrorMessage  : 
+LastWriteTime : 7/25/2012 11:05:00 PM
+Length        : 9728
+
+Hash          : C1905E39F3975D8DD2940A45E9677800419FCE70565E6FDDB9A3F3208E6D9702
+FullName      : C:\windows\system32\aclui.dll
+ErrorMessage  : 
+LastWriteTime : 7/25/2012 11:05:00 PM
+Length        : 997888
+
+Hash          : CC8F5076E15F8940750DBDC578705BD9EA1E4869F5B792BA6DFD8C8D4BABD216
+FullName      : C:\windows\system32\acppage.dll
+ErrorMessage  : 
+LastWriteTime : 7/25/2012 11:05:00 PM
+Length        : 43008
+
+Hash          : 6D7A750182EBFE7FE5AF5069263915A2CF90D46B2E3A126F3ED4376F34535BB9
+FullName      : C:\windows\system32\acproxy.dll
+ErrorMessage  : 
+LastWriteTime : 7/25/2012 11:05:00 PM
+Length        : 12288
+
+Hash          : 1252B4F2FAEBC587750E7E5935465B5C4EF7329AF77B4CC3AD622F3A02F362B2
+FullName      : C:\windows\system32\ActionCenter.dll
+ErrorMessage  : 
+LastWriteTime : 7/25/2012 11:05:00 PM
+Length        : 875520
+
+Hash          : 509ED9464D63735F40348B8B387CDC579DB54246B7CCF7F5511FE09BF965E748
+FullName      : C:\windows\system32\ActionCenterCPL.dll
+ErrorMessage  : 
+LastWriteTime : 7/25/2012 11:05:00 PM
+Length        : 544256
+
+
+
+PS C:\temp\ScriptingGamesEvent2> $folderInfo = Import-Clixml .\Decrypted\FolderInfo.xml
+PS C:\temp\ScriptingGamesEvent2> $folderInfo | select -first 10 | fl *
+
+
+Path      : C:\$Recycle.Bin
+FileCount : 0
+Size      : 0
+Error     : 
+
+Path      : C:\ExchangeSetupLogs
+FileCount : 129
+Size      : 89966394
+Error     : 
+
+Path      : C:\inetpub
+FileCount : 0
+Size      : 0
+Error     : 
+
+Path      : C:\PerfLogs
+FileCount : 0
+Size      : 0
+Error     : 
+
+Path      : C:\PortQryV2
+FileCount : 3
+Size      : 145161
+Error     : 
+
+Path      : C:\Program Files
+FileCount : 1
+Size      : 174
+Error     : 
+
+Path      : C:\Program Files (x86)
+FileCount : 1
+Size      : 174
+Error     : 
+
+Path      : C:\ProgramData
+FileCount : 1
+Size      : 3092
+Error     : 
+
+Path      : C:\root
+FileCount : 0
+Size      : 0
+Error     : 
+
+Path      : C:\Scripts
+FileCount : 18
+Size      : 97649
+Error     : 
+
+
+
+PS C:\temp\ScriptingGamesEvent2> dir .\Decrypted
+
+
+    Directory: C:\temp\ScriptingGamesEvent2\Decrypted
+
+
+Mode                LastWriteTime     Length Name                                                                      
+----                -------------     ------ ----                                                                      
+-a---          2/1/2014   9:44 AM       2962 EnvironmentVariables.xml                                                  
+-a---          2/1/2014   9:44 AM    2084396 FileInfo.xml                                                              
+-a---          2/1/2014   9:44 AM   18023314 FolderInfo.xml                                                            
+-a---          2/1/2014   9:44 AM      78218 InstalledSoftware.xml                                                     
+-a---          2/1/2014   9:44 AM      38900 ProcessInfo.xml                                                           
+-a---          2/1/2014   9:44 AM        784 RegistryInfo.xml                                                          
+-a---          2/1/2014   9:44 AM      56890 ServiceInfo.xml                                                           
+-a---          2/1/2014   9:44 AM       8686 SharedFolderInfo.xml                                                      
+
+
+PS C:\temp\ScriptingGamesEvent2> $process = Import-Clixml .\Decrypted\ProcessInfo.xml
+PS C:\temp\ScriptingGamesEvent2> $process | select -first 10 | fl *
+
+
+Name : Cayo.PolicyManager
+Path : C:\Program Files\Cayo Software\AdminAssistant\Cayo.PolicyManager.exe
+
+Name : certsrv
+Path : C:\Windows\system32\certsrv.exe
+
+Name : conhost
+Path : C:\Windows\system32\conhost.exe
+
+Name : conhost
+Path : C:\Windows\system32\conhost.exe
+
+Name : conhost
+Path : C:\Windows\system32\conhost.exe
+
+Name : csrss
+Path : C:\Windows\system32\csrss.exe
+
+Name : csrss
+Path : C:\Windows\system32\csrss.exe
+
+Name : dfsrs
+Path : C:\Windows\system32\DFSRs.exe
+
+Name : dfssvc
+Path : C:\Windows\system32\dfssvc.exe
+
+Name : dns
+Path : C:\Windows\system32\dns.exe
+
+
+
+PS C:\temp\ScriptingGamesEvent2> $service = Import-Clixml .\Decrypted\ServiceInfo.xml
+PS C:\temp\ScriptingGamesEvent2> $service | select -first 10 | fl *
+
+
+Name      : ADWS
+Caption   : Active Directory Web Services
+PathName  : C:\Windows\ADWS\Microsoft.ActiveDirectory.WebServices.exe
+StartMode : Auto
+
+Name      : AppHostSvc
+Caption   : Application Host Helper Service
+PathName  : C:\Windows\system32\svchost.exe -k apphost
+StartMode : Auto
+
+Name      : Appinfo
+Caption   : Application Information
+PathName  : C:\Windows\system32\svchost.exe -k netsvcs
+StartMode : Manual
+
+Name      : BFE
+Caption   : Base Filtering Engine
+PathName  : C:\Windows\system32\svchost.exe -k LocalServiceNoNetwork
+StartMode : Auto
+
+Name      : BITS
+Caption   : Background Intelligent Transfer Service
+PathName  : C:\Windows\System32\svchost.exe -k netsvcs
+StartMode : Auto
+
+Name      : BrokerInfrastructure
+Caption   : Background Tasks Infrastructure Service
+PathName  : C:\Windows\system32\svchost.exe -k DcomLaunch
+StartMode : Auto
+
+Name      : CayoAdminService
+Caption   : Cayo Software Admin Service
+PathName  : "C:\Program Files\Cayo Software\AdminAssistant\Cayo.PolicyManager.exe"
+StartMode : Auto
+
+Name      : CertPropSvc
+Caption   : Certificate Propagation
+PathName  : C:\Windows\system32\svchost.exe -k netsvcs
+StartMode : Manual
+
+Name      : CertSvc
+Caption   : Active Directory Certificate Services
+PathName  : C:\Windows\system32\certsrv.exe
+StartMode : Auto
+
+Name      : CryptSvc
+Caption   : Cryptographic Services
+PathName  : C:\Windows\system32\svchost.exe -k NetworkService
+StartMode : Auto
+
+
+
+PS C:\temp\ScriptingGamesEvent2> dir .\Decrypted
+
+
+    Directory: C:\temp\ScriptingGamesEvent2\Decrypted
+
+
+Mode                LastWriteTime     Length Name                                                                      
+----                -------------     ------ ----                                                                      
+-a---          2/1/2014   9:44 AM       2962 EnvironmentVariables.xml                                                  
+-a---          2/1/2014   9:44 AM    2084396 FileInfo.xml                                                              
+-a---          2/1/2014   9:44 AM   18023314 FolderInfo.xml                                                            
+-a---          2/1/2014   9:44 AM      78218 InstalledSoftware.xml                                                     
+-a---          2/1/2014   9:44 AM      38900 ProcessInfo.xml                                                           
+-a---          2/1/2014   9:44 AM        784 RegistryInfo.xml                                                          
+-a---          2/1/2014   9:44 AM      56890 ServiceInfo.xml                                                           
+-a---          2/1/2014   9:44 AM       8686 SharedFolderInfo.xml                                                      
+
+
+PS C:\temp\ScriptingGamesEvent2> $registry = Import-Clixml .\Decrypted\RegistryInfo.xml
+PS C:\temp\ScriptingGamesEvent2> $registry
+
+VBoxTray                                                    Path                                                       
+--------                                                    ----                                                       
+C:\Windows\system32\VBoxTray.exe                            HKLM:\Software\Microsoft\Windows\CurrentVersion\Run        
+
+
+PS C:\temp\ScriptingGamesEvent2> $registry | fl *
+
+
+VBoxTray : C:\Windows\system32\VBoxTray.exe
+Path     : HKLM:\Software\Microsoft\Windows\CurrentVersion\Run
+
+
+
+PS C:\temp\ScriptingGamesEvent2> Get-Item @($registry)[0].Path
+
+
+    Hive: HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion
+
+
+Name                           Property                                                                                
+----                           --------                                                                                
+Run                            VBoxTray : C:\Windows\system32\VBoxTray.exe                                             
+
+
+PS C:\temp\ScriptingGamesEvent2> $software = Import-Clixml .\Decrypted\InstalledSoftware.xml
+PS C:\temp\ScriptingGamesEvent2> $software | select -first 10 | fl *
+
+
+DisplayName     : Microsoft Exchange Server 2013
+DisplayVersion  : 15.0.516.32
+Publisher       : Microsoft Corporation
+InstallDate     : 
+InstallLocation : C:\Program Files\Microsoft\Exchange Server\V15\
+
+DisplayName     : Oracle VM VirtualBox Guest Additions 4.2.16
+DisplayVersion  : 4.2.16.0
+Publisher       : Oracle Corporation
+InstallDate     : 
+InstallLocation : 
+
+DisplayName     : Microsoft Unified Communications Managed API 4.0, Runtime
+DisplayVersion  : 5.0.8308.0
+Publisher       : Microsoft Corporation
+InstallDate     : 
+InstallLocation : C:\Program Files\Microsoft UCMA 4.0\Runtime\
+
+DisplayName     : Microsoft Exchange 2007 Enterprise Block List Updates
+DisplayVersion  : 3.3.4604.001
+Publisher       : Microsoft Corporation
+InstallDate     : 20130815
+InstallLocation : 
+
+DisplayName     : Microsoft Server Speech Platform Runtime (x64)
+DisplayVersion  : 11.0.7400.345
+Publisher       : Microsoft Corporation
+InstallDate     : 20130814
+InstallLocation : 
+
+DisplayName     : Microsoft Unified Communications Managed API 4.0, Runtime
+DisplayVersion  : 5.0.8308.0
+Publisher       : Microsoft Corporation
+InstallDate     : 20130814
+InstallLocation : 
+
+DisplayName     : Microsoft Exchange Server
+DisplayVersion  : 15.0.516.32
+Publisher       : Microsoft Corporation
+InstallDate     : 20130815
+InstallLocation : 
+
+DisplayName     : Microsoft Exchange Server Language Pack - Chinese (Traditional)
+DisplayVersion  : 15.0.516.32
+Publisher       : Microsoft Corporation
+InstallDate     : 20130815
+InstallLocation : 
+
+DisplayName     : Microsoft Exchange Server Language Pack - German
+DisplayVersion  : 15.0.516.32
+Publisher       : Microsoft Corporation
+InstallDate     : 20130815
+InstallLocation : 
+
+DisplayName     : Microsoft Exchange Server Language Pack - English
+DisplayVersion  : 15.0.516.32
+Publisher       : Microsoft Corporation
+InstallDate     : 20130815
+InstallLocation : 
+
+
+
+PS C:\temp\ScriptingGamesEvent2> dir .\Decrypted
+
+
+    Directory: C:\temp\ScriptingGamesEvent2\Decrypted
+
+
+Mode                LastWriteTime     Length Name                                                                      
+----                -------------     ------ ----                                                                      
+-a---          2/1/2014   9:44 AM       2962 EnvironmentVariables.xml                                                  
+-a---          2/1/2014   9:44 AM    2084396 FileInfo.xml                                                              
+-a---          2/1/2014   9:44 AM   18023314 FolderInfo.xml                                                            
+-a---          2/1/2014   9:44 AM      78218 InstalledSoftware.xml                                                     
+-a---          2/1/2014   9:44 AM      38900 ProcessInfo.xml                                                           
+-a---          2/1/2014   9:44 AM        784 RegistryInfo.xml                                                          
+-a---          2/1/2014   9:44 AM      56890 ServiceInfo.xml                                                           
+-a---          2/1/2014   9:44 AM       8686 SharedFolderInfo.xml                                                      
+
+
+PS C:\temp\ScriptingGamesEvent2> $share = Import-Clixml .\Decrypted\SharedFolderInfo.xml
+PS C:\temp\ScriptingGamesEvent2> $share | fl *
+
+
+Name        : Admin
+Path        : D:\SharedAreas\Admin
+Description : 
+
+Name        : ADMIN$
+Path        : C:\Windows
+Description : Remote Admin
+
+Name        : AdminMyDoc$
+Path        : D:\Users\MyDocuments\Admin
+Description : 
+
+Name        : C$
+Path        : C:\
+Description : Default share
+
+Name        : CertEnroll
+Path        : C:\Windows\system32\CertSrv\CertEnroll
+Description : Active Directory Certificate Services share
+
+Name        : D$
+Path        : D:\
+Description : Default share
+
+Name        : Desktop$
+Path        : D:\Management\Desktop
+Description : 
+
+Name        : IPC$
+Path        : 
+Description : Remote IPC
+
+Name        : NETLOGON
+Path        : C:\Windows\SYSVOL\sysvol\testdomain.local\SCRIPTS
+Description : Logon server share 
+
+Name        : print$
+Path        : C:\Windows\system32\spool\drivers
+Description : Printer Drivers
+
+Name        : PupilMyDoc$
+Path        : D:\Users\MyDocuments\Pupils
+Description : 
+
+Name        : Shared
+Path        : D:\SharedAreas\Shared
+Description : 
+
+Name        : Staff
+Path        : D:\SharedAreas\Staff
+Description : 
+
+Name        : StaffMyDoc$
+Path        : D:\Users\MyDocuments\Staff
+Description : 
+
+Name        : StartMenu$
+Path        : D:\Management\StartMenu
+Description : 
+
+Name        : Subjects
+Path        : D:\SharedAreas\Subjects
+Description : 
+
+Name        : SYSVOL
+Path        : C:\Windows\SYSVOL\sysvol
+Description : Logon server share 
+
+Name        : UpdateServicesPackages
+Path        : C:\WSUSDepot\UpdateServicesPackages
+Description : A network share to be used by client systems for collecting all software packages (usually applications) 
+              published on this WSUS system.
+
+Name        : WsusContent
+Path        : C:\WSUSDepot\WsusContent
+Description : A network share to be used by Local Publishing to place published content on this WSUS system.
+
+
+
+PS C:\temp\ScriptingGamesEvent2> write-host 'Log file generated by script will be uploaded to the Scripting Games site; not output here.'
+
+Log file generated by script will be uploaded to the Scripting Games site; not output here.
+
+PS C:\temp\ScriptingGamesEvent2> Stop-Transcript
+**********************
+Windows PowerShell transcript end
+End time: 20140201095334
+**********************

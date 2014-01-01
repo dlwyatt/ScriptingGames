@@ -1,0 +1,338 @@
+**********************
+Windows PowerShell transcript start
+Start time: 20140207221728
+Username  : WYATT-PC\Dave 
+Machine	  : WYATT-PC (Microsoft Windows NT 6.1.7601 Service Pack 1) 
+**********************
+Transcript started, output file is .\Transcript.txt
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3> Get-Command .\CreateFinanceDepartmentFolders-2014_02_07.ps1 -Syntax
+CreateFinanceDepartmentFolders-2014_02_07.ps1 [[-Path] <string>] [[-CsvDirectory] <string>] [[-Domain] <string>] 
+[-WhatIf] [-Confirm] [<CommonParameters>]
+
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3> md Departments
+
+
+    Directory: C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3
+
+
+Mode                LastWriteTime     Length Name                                                                      
+----                -------------     ------ ----                                                                      
+da---          2/7/2014  10:17 PM            Departments                                                               
+
+
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3> .\CreateFinanceDepartmentFolders-2014_02_07.ps1 -Path .\Departments -CsvDirectory . -Domain $env:COMPUTERNAME -Verbose
+VERBOSE: Creating folder 'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance'...
+VERBOSE: Setting permissions on directory 'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance'...
+VERBOSE: Creating folder 'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Open'...
+VERBOSE: Setting permissions on directory 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Open'...
+VERBOSE: Creating folder 'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Receipts'...
+VERBOSE: Setting permissions on directory 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Receipts'...
+VERBOSE: Creating folder 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Receipts\Receipts Shared Folder'...
+VERBOSE: Setting permissions on directory 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Receipts\Receipts Shared Folder'...
+VERBOSE: Creating folder 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Receipts\Receipts Private Folder'...
+VERBOSE: Setting permissions on directory 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Receipts\Receipts Private Folder'...
+VERBOSE: Creating folder 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Receipts\Receipts Lead Folder'...
+VERBOSE: Setting permissions on directory 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Receipts\Receipts Lead Folder'...
+VERBOSE: Creating folder 'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Payments'...
+VERBOSE: Setting permissions on directory 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Payments'...
+VERBOSE: Creating folder 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Payments\Payments Shared Folder'...
+VERBOSE: Setting permissions on directory 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Payments\Payments Shared Folder'...
+VERBOSE: Creating folder 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Payments\Payments Private Folder'...
+VERBOSE: Setting permissions on directory 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Payments\Payments Private Folder'...
+VERBOSE: Creating folder 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Payments\Payments Lead Folder'...
+VERBOSE: Setting permissions on directory 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Payments\Payments Lead Folder'...
+VERBOSE: Creating folder 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Accounting'...
+VERBOSE: Setting permissions on directory 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Accounting'...
+VERBOSE: Creating folder 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Accounting\Accounting Shared 
+Folder'...
+VERBOSE: Setting permissions on directory 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Accounting\Accounting Shared 
+Folder'...
+VERBOSE: Creating folder 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Accounting\Accounting Private 
+Folder'...
+VERBOSE: Setting permissions on directory 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Accounting\Accounting Private 
+Folder'...
+VERBOSE: Creating folder 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Accounting\Accounting Lead Folder'...
+VERBOSE: Setting permissions on directory 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Accounting\Accounting Lead Folder'...
+VERBOSE: Creating folder 'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Auditing'...
+VERBOSE: Setting permissions on directory 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Auditing'...
+VERBOSE: Creating folder 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Auditing\Auditing Shared Folder'...
+VERBOSE: Setting permissions on directory 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Auditing\Auditing Shared Folder'...
+VERBOSE: Creating folder 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Auditing\Auditing Private Folder'...
+VERBOSE: Setting permissions on directory 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Auditing\Auditing Private Folder'...
+VERBOSE: Creating folder 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Auditing\Auditing Lead Folder'...
+VERBOSE: Setting permissions on directory 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Auditing\Auditing Lead Folder'...
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3> dir
+
+
+    Directory: C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3
+
+
+Mode                LastWriteTime     Length Name                                                                      
+----                -------------     ------ ----                                                                      
+da---          2/7/2014  10:18 PM            Departments                                                               
+-a---          2/7/2014   4:26 PM       9041 AnalyzePermissions-2014_02_07.ps1                                         
+-a---          2/7/2014  10:18 PM       3883 CreateFinance-2014_02_07.csv                                              
+-a---          2/7/2014   4:03 PM       4660 CreateFinanceDepartmentFolders-2014_02_07.ps1                             
+-a---          2/1/2014   4:26 PM       5250 EnhancedHTML2.psd1                                                        
+-a---          2/5/2014   8:07 AM      29724 EnhancedHTML2.psm1                                                        
+-a---         1/31/2014  10:55 PM     320979 event.docx                                                                
+-a---          2/7/2014   5:41 PM      42290 Event3.psm1                                                               
+-a---          2/5/2014   8:07 AM       2461 LongPathDirectory.cs                                                      
+-a---          2/5/2014   8:07 AM       2444 LongPathFile.cs                                                           
+-a---          2/5/2014   8:08 AM      16896 Microsoft.Experimental.IO.dll                                             
+-a---          2/5/2014   8:07 AM       2118 NativeMethods.cs                                                          
+-a---          2/3/2014  11:01 PM        475 readme.txt                                                                
+-a---          2/7/2014  10:17 PM          0 Transcript.txt                                                            
+
+
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3> dir .\Departments -Directory -Recurse | select -ExpandProperty FullName
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Accounting
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Auditing
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Open
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Payments
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Receipts
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Accounting\Accounting Lead Folder
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Accounting\Accounting Private Folder
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Accounting\Accounting Shared Folder
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Auditing\Auditing Lead Folder
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Auditing\Auditing Private Folder
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Auditing\Auditing Shared Folder
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Payments\Payments Lead Folder
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Payments\Payments Private Folder
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Payments\Payments Shared Folder
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Receipts\Receipts Lead Folder
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Receipts\Receipts Private Folder
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Receipts\Receipts Shared Folder
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3> import-csv .\CreateFinance-2014_02_07.csv | % { $_.Path; ''; (Get-Acl -Path $_.Path).AccessToString }
+
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance
+
+NT AUTHORITY\Authenticated Users Allow  ReadAndExecute, Synchronize
+BUILTIN\Administrators Allow  FullControl
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Open
+
+WYATT-PC\Finance Allow  Modify, Synchronize
+NT AUTHORITY\Authenticated Users Allow  ReadAndExecute, Synchronize
+BUILTIN\Administrators Allow  FullControl
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Receipts
+
+BUILTIN\Administrators Allow  FullControl
+WYATT-PC\Finance Allow  ReadAndExecute, Synchronize
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Receipts\Receipts Shared Folder
+
+WYATT-PC\Receipts Allow  Modify, Synchronize
+BUILTIN\Administrators Allow  FullControl
+WYATT-PC\Finance Allow  ReadAndExecute, Synchronize
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Receipts\Receipts Private Folder
+
+BUILTIN\Administrators Allow  FullControl
+WYATT-PC\Receipts Allow  Modify, Synchronize
+WYATT-PC\Auditing Allow  ReadAndExecute, Synchronize
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Receipts\Receipts Lead Folder
+
+BUILTIN\Administrators Allow  FullControl
+WYATT-PC\Receipts_lead Allow  Modify, Synchronize
+WYATT-PC\Auditing Allow  ReadAndExecute, Synchronize
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Payments
+
+BUILTIN\Administrators Allow  FullControl
+WYATT-PC\Finance Allow  ReadAndExecute, Synchronize
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Payments\Payments Shared Folder
+
+WYATT-PC\Payments Allow  Modify, Synchronize
+BUILTIN\Administrators Allow  FullControl
+WYATT-PC\Finance Allow  ReadAndExecute, Synchronize
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Payments\Payments Private Folder
+
+BUILTIN\Administrators Allow  FullControl
+WYATT-PC\Payments Allow  Modify, Synchronize
+WYATT-PC\Auditing Allow  ReadAndExecute, Synchronize
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Payments\Payments Lead Folder
+
+BUILTIN\Administrators Allow  FullControl
+WYATT-PC\Payments_lead Allow  Modify, Synchronize
+WYATT-PC\Auditing Allow  ReadAndExecute, Synchronize
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Accounting
+
+BUILTIN\Administrators Allow  FullControl
+WYATT-PC\Finance Allow  ReadAndExecute, Synchronize
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Accounting\Accounting Shared Folder
+
+WYATT-PC\Accounting Allow  Modify, Synchronize
+BUILTIN\Administrators Allow  FullControl
+WYATT-PC\Finance Allow  ReadAndExecute, Synchronize
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Accounting\Accounting Private Folder
+
+BUILTIN\Administrators Allow  FullControl
+WYATT-PC\Accounting Allow  Modify, Synchronize
+WYATT-PC\Auditing Allow  ReadAndExecute, Synchronize
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Accounting\Accounting Lead Folder
+
+BUILTIN\Administrators Allow  FullControl
+WYATT-PC\Accounting_lead Allow  Modify, Synchronize
+WYATT-PC\Auditing Allow  ReadAndExecute, Synchronize
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Auditing
+
+BUILTIN\Administrators Allow  FullControl
+WYATT-PC\Finance Allow  ReadAndExecute, Synchronize
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Auditing\Auditing Shared Folder
+
+WYATT-PC\Auditing Allow  Modify, Synchronize
+BUILTIN\Administrators Allow  FullControl
+WYATT-PC\Finance Allow  ReadAndExecute, Synchronize
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Auditing\Auditing Private Folder
+
+BUILTIN\Administrators Allow  FullControl
+WYATT-PC\Auditing Allow  Modify, Synchronize
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Auditing\Auditing Lead Folder
+
+BUILTIN\Administrators Allow  FullControl
+WYATT-PC\Auditing Allow  ReadAndExecute, Synchronize
+WYATT-PC\Auditing_lead Allow  Modify, Synchronize
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3>     import-csv .\CreateFinance-2014_02_07.csv | % { $_.Path; ''; (Get-Acl -Path $_.Path).GetSecurityDescriptorSddlForm('Access') }
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance
+
+D:PAI(A;OICI;0x1200a9;;;AU)(A;OICI;FA;;;BA)
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Open
+
+D:AI(A;OICI;0x1301bf;;;S-1-5-21-395828037-1431251498-181916464-1009)(A;OICIID;0x1200a9;;;AU)(A;OICIID;FA;;;BA)
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Receipts
+
+D:PAI(A;OICI;FA;;;BA)(A;OICI;0x1200a9;;;S-1-5-21-395828037-1431251498-181916464-1009)
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Receipts\Receipts Shared Folder
+
+D:AI(A;OICI;0x1301bf;;;S-1-5-21-395828037-1431251498-181916464-1010)(A;OICIID;FA;;;BA)(A;OICIID;0x1200a9;;;S-1-5-21-395
+828037-1431251498-181916464-1009)
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Receipts\Receipts Private Folder
+
+D:PAI(A;OICI;FA;;;BA)(A;OICI;0x1301bf;;;S-1-5-21-395828037-1431251498-181916464-1010)(A;OICI;0x1200a9;;;S-1-5-21-395828
+037-1431251498-181916464-1016)
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Receipts\Receipts Lead Folder
+
+D:PAI(A;OICI;FA;;;BA)(A;OICI;0x1301bf;;;S-1-5-21-395828037-1431251498-181916464-1011)(A;OICI;0x1200a9;;;S-1-5-21-395828
+037-1431251498-181916464-1016)
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Payments
+
+D:PAI(A;OICI;FA;;;BA)(A;OICI;0x1200a9;;;S-1-5-21-395828037-1431251498-181916464-1009)
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Payments\Payments Shared Folder
+
+D:AI(A;OICI;0x1301bf;;;S-1-5-21-395828037-1431251498-181916464-1012)(A;OICIID;FA;;;BA)(A;OICIID;0x1200a9;;;S-1-5-21-395
+828037-1431251498-181916464-1009)
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Payments\Payments Private Folder
+
+D:PAI(A;OICI;FA;;;BA)(A;OICI;0x1301bf;;;S-1-5-21-395828037-1431251498-181916464-1012)(A;OICI;0x1200a9;;;S-1-5-21-395828
+037-1431251498-181916464-1016)
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Payments\Payments Lead Folder
+
+D:PAI(A;OICI;FA;;;BA)(A;OICI;0x1301bf;;;S-1-5-21-395828037-1431251498-181916464-1013)(A;OICI;0x1200a9;;;S-1-5-21-395828
+037-1431251498-181916464-1016)
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Accounting
+
+D:PAI(A;OICI;FA;;;BA)(A;OICI;0x1200a9;;;S-1-5-21-395828037-1431251498-181916464-1009)
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Accounting\Accounting Shared Folder
+
+D:AI(A;OICI;0x1301bf;;;S-1-5-21-395828037-1431251498-181916464-1014)(A;OICIID;FA;;;BA)(A;OICIID;0x1200a9;;;S-1-5-21-395
+828037-1431251498-181916464-1009)
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Accounting\Accounting Private Folder
+
+D:PAI(A;OICI;FA;;;BA)(A;OICI;0x1301bf;;;S-1-5-21-395828037-1431251498-181916464-1014)(A;OICI;0x1200a9;;;S-1-5-21-395828
+037-1431251498-181916464-1016)
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Accounting\Accounting Lead Folder
+
+D:PAI(A;OICI;FA;;;BA)(A;OICI;0x1301bf;;;S-1-5-21-395828037-1431251498-181916464-1015)(A;OICI;0x1200a9;;;S-1-5-21-395828
+037-1431251498-181916464-1016)
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Auditing
+
+D:PAI(A;OICI;FA;;;BA)(A;OICI;0x1200a9;;;S-1-5-21-395828037-1431251498-181916464-1009)
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Auditing\Auditing Shared Folder
+
+D:AI(A;OICI;0x1301bf;;;S-1-5-21-395828037-1431251498-181916464-1016)(A;OICIID;FA;;;BA)(A;OICIID;0x1200a9;;;S-1-5-21-395
+828037-1431251498-181916464-1009)
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Auditing\Auditing Private Folder
+
+D:PAI(A;OICI;FA;;;BA)(A;OICI;0x1301bf;;;S-1-5-21-395828037-1431251498-181916464-1016)
+C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Auditing\Auditing Lead Folder
+
+D:PAI(A;OICI;FA;;;BA)(A;OICI;0x1200a9;;;S-1-5-21-395828037-1431251498-181916464-1016)(A;OICI;0x1301bf;;;S-1-5-21-395828
+037-1431251498-181916464-1017)
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3> Write-Host 'Modifying some permissions so the report has something to show.'
+Modifying some permissions so the report has something to show.
+
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3> md .\Departments\Finance\Finance_Open\TestFolder
+
+
+    Directory: C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Open
+
+
+Mode                LastWriteTime     Length Name                                                                      
+----                -------------     ------ ----                                                                      
+da---          2/7/2014  10:22 PM            TestFolder                                                                
+
+
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3> $acl = Get-Acl .\Departments\Finance\Finance_Open\TestFolder
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3> $rule = New-Object System.Security.AccessControl.FileSystemAccessRule('WYATT-PC\dave', 'FullControl', 'ContainerInherit, ObjectInherit', 'None', 'Allow')
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3> $acl.AddAccessRule($rule)
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3> $acl | Set-Acl
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3> (Get-Acl .\Departments\Finance\Finance_Open\TestFolder).AccessToString
+WYATT-PC\Dave Allow  FullControl
+WYATT-PC\Finance Allow  Modify, Synchronize
+NT AUTHORITY\Authenticated Users Allow  ReadAndExecute, Synchronize
+BUILTIN\Administrators Allow  FullControl
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3> .\AnalyzePermissions-2014_02_07.ps1 -Path .\Departments\Finance -CsvPath .\CreateFinance-2014_02_07.csv -OutputDirectory .
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3> dir *.html
+
+
+    Directory: C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3
+
+
+Mode                LastWriteTime     Length Name                                                                      
+----                -------------     ------ ----                                                                      
+-a---          2/7/2014  10:24 PM      17388 Finance-2014_02_07.html                                                   
+
+
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3> .\AnalyzePermissions-2014_02_07.ps1 -Path .\Departments\Finance -CsvPath .\CreateFinance-2014_02_07.csv -FixPermissions -WhatIf
+What if: Performing the operation "Update permissions" on target "C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Open\TestFolder".
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3> .\AnalyzePermissions-2014_02_07.ps1 -Path .\Departments\Finance -CsvPath .\CreateFinance-2014_02_07.csv -FixPermissions -Verbose
+VERBOSE: Correcting permissions for directory 
+'C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3\Departments\Finance\Finance_Open\TestFolder'...
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3> .\AnalyzePermissions-2014_02_07.ps1 -Path .\Departments\Finance -CsvPath .\CreateFinance-2014_02_07.csv -FixPermissions -Verbose
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3> (Get-Acl .\Departments\Finance\Finance_Open\TestFolder).AccessToString
+WYATT-PC\Finance Allow  Modify, Synchronize
+NT AUTHORITY\Authenticated Users Allow  ReadAndExecute, Synchronize
+BUILTIN\Administrators Allow  FullControl
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event3> Stop-Transcript
+**********************
+Windows PowerShell transcript end
+End time: 20140207222503
+**********************

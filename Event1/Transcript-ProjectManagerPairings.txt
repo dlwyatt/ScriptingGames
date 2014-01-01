@@ -1,0 +1,416 @@
+**********************
+Windows PowerShell transcript start
+Start time: 20140120114049
+Username  : TESTDOMAIN\dlwyatt 
+Machine	  : WIN2012VM (Microsoft Windows NT 6.2.9200.0) 
+**********************
+Transcript started, output file is .\Transcript-ProjectManagerPairings.txt
+
+PS C:\temp\ScriptingGamesEvent1> $participants = Get-ADUser -LDAPFilter '(!sAMAccountName=*$)' | Select -ExpandProperty SamAccountName
+PS C:\temp\ScriptingGamesEvent1> $participants
+
+Administrator
+Guest
+krbtgt
+dlwyatt
+TestAdmin1
+TestAdmin2
+TestStaff1
+TestStaff2
+TestPupil1
+TestPupil2
+$E31000-TRS8GD51UOCP
+SM_2ebee0a2615043e3a
+SM_d3064df764d641768
+SM_17fbb0052c014b24a
+SM_3b60a5d7d21a44fc9
+SM_3d1e6b134c564893b
+SM_c74c1dcf3a0a42269
+SM_fa251eeb5a354144b
+SM_40801c6ed3ee458ca
+SM_c725e7d7e3d0463fa
+AdminGuy
+NonAdminGuy
+CESService
+SqlServerAgent
+SQLDBEngine
+SQLAnalysis
+SQLReporting
+TestUser
+Jada
+WTF
+CayoTestAdmin
+
+PS C:\temp\ScriptingGamesEvent1> $participants.Count
+31
+
+PS C:\temp\ScriptingGamesEvent1> $participants | .\Get-ProjectManagerPairings.ps1 -Primary 'dlwyatt','Administrator','Jada'
+WARNING: An odd number of names was entered, and no PairTwice choice was specified on the command line.
+
+Names:
+
+  0: Administrator
+  1: Guest
+  2: krbtgt
+  3: dlwyatt
+  4: TestAdmin1
+  5: TestAdmin2
+  6: TestStaff1
+  7: TestStaff2
+  8: TestPupil1
+  9: TestPupil2
+ 10: $E31000-TRS8GD51UOCP
+ 11: SM_2ebee0a2615043e3a
+ 12: SM_d3064df764d641768
+ 13: SM_17fbb0052c014b24a
+ 14: SM_3b60a5d7d21a44fc9
+ 15: SM_3d1e6b134c564893b
+ 16: SM_c74c1dcf3a0a42269
+ 17: SM_fa251eeb5a354144b
+ 18: SM_40801c6ed3ee458ca
+ 19: SM_c725e7d7e3d0463fa
+ 20: AdminGuy
+ 21: NonAdminGuy
+ 22: CESService
+ 23: SqlServerAgent
+ 24: SQLDBEngine
+ 25: SQLAnalysis
+ 26: SQLReporting
+ 27: TestUser
+ 28: Jada
+ 29: WTF
+ 30: CayoTestAdmin
+
+Please type the number of the person you wish to be paired twice.
+To abort the script, press Enter without typing anything.
+Enter a number: 3
+
+Pairings:
+
+Jada, SQLReporting
+Administrator, TestPupil1
+dlwyatt, WTF
+dlwyatt, TestPupil2
+SM_c74c1dcf3a0a42269, SM_c725e7d7e3d0463fa
+TestStaff2, SM_17fbb0052c014b24a
+SqlServerAgent, SQLDBEngine
+SM_fa251eeb5a354144b, TestUser
+SM_3b60a5d7d21a44fc9, NonAdminGuy
+TestAdmin1, CayoTestAdmin
+Guest, TestAdmin2
+SQLAnalysis, $E31000-TRS8GD51UOCP
+CESService, SM_2ebee0a2615043e3a
+SM_3d1e6b134c564893b, krbtgt
+SM_40801c6ed3ee458ca, AdminGuy
+TestStaff1, SM_d3064df764d641768
+
+PS C:\temp\ScriptingGamesEvent1> $participants | .\Get-ProjectManagerPairings.ps1 -Primary 'AdminGuy','NonAdminGuy' -SendEmail -Cc 'projectManager@company.com' -PairTwice 'Administrator'
+
+Pairings:
+
+NonAdminGuy, SM_40801c6ed3ee458ca
+AdminGuy, Jada
+CESService, SM_c725e7d7e3d0463fa
+dlwyatt, krbtgt
+SM_3d1e6b134c564893b, SqlServerAgent
+TestPupil1, SM_2ebee0a2615043e3a
+TestStaff2, CayoTestAdmin
+SQLReporting, SQLDBEngine
+SM_3b60a5d7d21a44fc9, TestAdmin1
+Guest, Administrator
+Administrator, $E31000-TRS8GD51UOCP
+SM_d3064df764d641768, SQLAnalysis
+TestStaff1, SM_c74c1dcf3a0a42269
+TestPupil2, WTF
+SM_17fbb0052c014b24a, SM_fa251eeb5a354144b
+TestUser, TestAdmin2
+
+WARNING: Could not find email address for user 'NonAdminGuy' in Active Directory.
+WARNING: Could not find email address for user 'Jada' in Active Directory.
+WARNING: Could not find email address for user 'CESService' in Active Directory.
+WARNING: Could not find email address for user 'krbtgt' in Active Directory.
+WARNING: Could not find email address for user 'SqlServerAgent' in Active Directory.
+WARNING: Could not find email address for user 'TestPupil1' in Active Directory.
+WARNING: Could not find email address for user 'TestStaff2' in Active Directory.
+WARNING: Could not find email address for user 'CayoTestAdmin' in Active Directory.
+WARNING: Could not find email address for user 'SQLReporting' in Active Directory.
+WARNING: Could not find email address for user 'SQLDBEngine' in Active Directory.
+WARNING: Could not find email address for user 'TestAdmin1' in Active Directory.
+WARNING: Could not find email address for user 'Guest' in Active Directory.
+WARNING: Could not find email address for user 'Administrator' in Active Directory.
+WARNING: Could not find email address for user 'Administrator' in Active Directory.
+WARNING: Could not find email address for user '$E31000-TRS8GD51UOCP' in Active Directory.
+WARNING: Could not find email address for user 'SQLAnalysis' in Active Directory.
+WARNING: Could not find email address for user 'TestStaff1' in Active Directory.
+WARNING: Could not find email address for user 'TestPupil2' in Active Directory.
+WARNING: Could not find email address for user 'WTF' in Active Directory.
+WARNING: Could not find email address for user 'TestUser' in Active Directory.
+WARNING: Could not find email address for user 'TestAdmin2' in Active Directory.
+
+PS C:\temp\ScriptingGamesEvent1> Write-Host "You want Verbose output of the algorithm's progress?  You asked for it..."
+You want Verbose output of the algorithm's progress?  You asked for it...
+
+PS C:\temp\ScriptingGamesEvent1> $participants | .\Get-ProjectManagerPairings.ps1 -Primary 'dlwyatt','AdminGuy' -PairTwice 'Jada' -Verbose
+VERBOSE: Importing function 'Get-EmailAddress'.
+VERBOSE: Importing function 'Get-Pairing'.
+VERBOSE: Loading data file 'C:\temp\ScriptingGamesEvent1\history.xml'.
+VERBOSE: Data file load complete.
+VERBOSE: Generating pairings...
+VERBOSE: Trying pairing:  AdminGuy, TestStaff1
+VERBOSE: Trying pairing:  dlwyatt, SM_3d1e6b134c564893b
+VERBOSE: Trying pairing:  Jada, SM_c725e7d7e3d0463fa
+VERBOSE: Trying pairing:  Jada, SM_c74c1dcf3a0a42269
+VERBOSE: Trying pairing:  SM_d3064df764d641768, SQLReporting
+VERBOSE: Trying pairing:  CayoTestAdmin, SM_3b60a5d7d21a44fc9
+VERBOSE: Trying pairing:  CESService, SM_17fbb0052c014b24a
+VERBOSE: Trying pairing:  NonAdminGuy, SqlServerAgent
+VERBOSE: Trying pairing:  TestPupil2, SM_fa251eeb5a354144b
+VERBOSE: Trying pairing:  TestPupil1, Guest
+VERBOSE: Trying pairing:  Administrator, SM_40801c6ed3ee458ca
+VERBOSE: Trying pairing:  TestStaff2, TestAdmin1
+VERBOSE: Trying pairing:  SQLDBEngine, WTF
+VERBOSE: Trying pairing:  krbtgt, SQLAnalysis
+VERBOSE: krbtgt not paired with SQLAnalysis due to an identical pairing in recent history.
+VERBOSE: Trying pairing:  krbtgt, SM_2ebee0a2615043e3a
+VERBOSE: Trying pairing:  SQLAnalysis, TestUser
+VERBOSE: Trying pairing:  TestAdmin2, $E31000-TRS8GD51UOCP
+VERBOSE: Pairing successful: TestAdmin2, $E31000-TRS8GD51UOCP
+VERBOSE: Pairing successful: SQLAnalysis, TestUser
+VERBOSE: Pairing successful: krbtgt, SM_2ebee0a2615043e3a
+VERBOSE: Pairing successful: SQLDBEngine, WTF
+VERBOSE: Pairing successful: TestStaff2, TestAdmin1
+VERBOSE: Pairing successful: Administrator, SM_40801c6ed3ee458ca
+VERBOSE: Pairing successful: TestPupil1, Guest
+VERBOSE: Pairing successful: TestPupil2, SM_fa251eeb5a354144b
+VERBOSE: Pairing successful: NonAdminGuy, SqlServerAgent
+VERBOSE: Pairing successful: CESService, SM_17fbb0052c014b24a
+VERBOSE: Pairing successful: CayoTestAdmin, SM_3b60a5d7d21a44fc9
+VERBOSE: Pairing successful: SM_d3064df764d641768, SQLReporting
+VERBOSE: Pairing successful: Jada, SM_c74c1dcf3a0a42269
+VERBOSE: Pairing successful: Jada, SM_c725e7d7e3d0463fa
+VERBOSE: Pairing successful: dlwyatt, SM_3d1e6b134c564893b
+VERBOSE: Pairing successful: AdminGuy, TestStaff1
+VERBOSE: Pairing generation complete.
+
+Pairings:
+
+AdminGuy, TestStaff1
+dlwyatt, SM_3d1e6b134c564893b
+Jada, SM_c725e7d7e3d0463fa
+Jada, SM_c74c1dcf3a0a42269
+SM_d3064df764d641768, SQLReporting
+CayoTestAdmin, SM_3b60a5d7d21a44fc9
+CESService, SM_17fbb0052c014b24a
+NonAdminGuy, SqlServerAgent
+TestPupil2, SM_fa251eeb5a354144b
+TestPupil1, Guest
+Administrator, SM_40801c6ed3ee458ca
+TestStaff2, TestAdmin1
+SQLDBEngine, WTF
+krbtgt, SM_2ebee0a2615043e3a
+SQLAnalysis, TestUser
+TestAdmin2, $E31000-TRS8GD51UOCP
+
+VERBOSE: Saving new data to file 'C:\temp\ScriptingGamesEvent1\history.xml'...
+VERBOSE: Finished updating data file.
+
+PS C:\temp\ScriptingGamesEvent1> Write-Host "Generating some additional pairings for the history file."
+Generating some additional pairings for the history file.
+
+PS C:\temp\ScriptingGamesEvent1> $participants | .\Get-ProjectManagerPairings.ps1 -Primary 'dlwyatt','AdminGuy' -PairTwice 'Jada'
+
+Pairings:
+
+dlwyatt, SQLDBEngine
+AdminGuy, CESService
+CayoTestAdmin, SM_d3064df764d641768
+$E31000-TRS8GD51UOCP, SM_c725e7d7e3d0463fa
+SQLReporting, Administrator
+SM_fa251eeb5a354144b, Guest
+krbtgt, TestAdmin2
+TestAdmin1, WTF
+TestStaff1, TestPupil1
+SM_3d1e6b134c564893b, TestStaff2
+SM_3b60a5d7d21a44fc9, TestUser
+TestPupil2, NonAdminGuy
+SQLAnalysis, SM_40801c6ed3ee458ca
+SM_2ebee0a2615043e3a, SM_c74c1dcf3a0a42269
+SqlServerAgent, Jada
+SM_17fbb0052c014b24a, Jada
+
+PS C:\temp\ScriptingGamesEvent1> $participants | .\Get-ProjectManagerPairings.ps1 -Primary 'dlwyatt','AdminGuy' -PairTwice 'Jada'
+
+Pairings:
+
+AdminGuy, SM_c725e7d7e3d0463fa
+dlwyatt, krbtgt
+SM_fa251eeb5a354144b, SM_17fbb0052c014b24a
+SM_d3064df764d641768, Guest
+SQLDBEngine, SM_3d1e6b134c564893b
+TestUser, WTF
+SM_3b60a5d7d21a44fc9, Administrator
+SQLReporting, TestPupil2
+SM_40801c6ed3ee458ca, Jada
+Jada, TestPupil1
+TestAdmin1, NonAdminGuy
+TestStaff2, CayoTestAdmin
+$E31000-TRS8GD51UOCP, SM_c74c1dcf3a0a42269
+TestAdmin2, SQLAnalysis
+TestStaff1, CESService
+SM_2ebee0a2615043e3a, SqlServerAgent
+
+PS C:\temp\ScriptingGamesEvent1> $participants | .\Get-ProjectManagerPairings.ps1 -Primary 'dlwyatt','AdminGuy' -PairTwice 'Jada'
+
+Pairings:
+
+AdminGuy, SqlServerAgent
+dlwyatt, SM_3b60a5d7d21a44fc9
+CESService, TestStaff2
+SM_17fbb0052c014b24a, WTF
+Jada, SQLDBEngine
+Jada, SQLReporting
+SM_2ebee0a2615043e3a, CayoTestAdmin
+krbtgt, SM_fa251eeb5a354144b
+TestAdmin1, Administrator
+SM_3d1e6b134c564893b, $E31000-TRS8GD51UOCP
+SM_d3064df764d641768, TestStaff1
+TestAdmin2, Guest
+SQLAnalysis, NonAdminGuy
+SM_c74c1dcf3a0a42269, TestPupil1
+SM_40801c6ed3ee458ca, SM_c725e7d7e3d0463fa
+TestUser, TestPupil2
+
+PS C:\temp\ScriptingGamesEvent1> $participants | .\Get-ProjectManagerPairings.ps1 -Primary 'dlwyatt','AdminGuy' -PairTwice 'Jada'
+
+Pairings:
+
+AdminGuy, SQLAnalysis
+dlwyatt, SM_d3064df764d641768
+SM_17fbb0052c014b24a, SM_c74c1dcf3a0a42269
+WTF, SM_3d1e6b134c564893b
+TestAdmin1, TestAdmin2
+CESService, SM_c725e7d7e3d0463fa
+TestPupil1, SM_3b60a5d7d21a44fc9
+Jada, SM_2ebee0a2615043e3a
+Jada, TestUser
+SQLReporting, krbtgt
+SM_40801c6ed3ee458ca, TestStaff1
+SqlServerAgent, SM_fa251eeb5a354144b
+Administrator, SQLDBEngine
+Guest, TestStaff2
+CayoTestAdmin, NonAdminGuy
+$E31000-TRS8GD51UOCP, TestPupil2
+
+PS C:\temp\ScriptingGamesEvent1> $participants | .\Get-ProjectManagerPairings.ps1 -Primary 'dlwyatt','AdminGuy' -PairTwice 'Jada'
+
+Pairings:
+
+dlwyatt, TestUser
+AdminGuy, SQLReporting
+SqlServerAgent, SM_3d1e6b134c564893b
+TestPupil2, SM_40801c6ed3ee458ca
+SM_c74c1dcf3a0a42269, SM_fa251eeb5a354144b
+TestPupil1, krbtgt
+Administrator, TestStaff1
+SQLDBEngine, NonAdminGuy
+CESService, SM_3b60a5d7d21a44fc9
+SM_2ebee0a2615043e3a, Guest
+TestAdmin1, Jada
+Jada, $E31000-TRS8GD51UOCP
+TestStaff2, WTF
+CayoTestAdmin, SM_c725e7d7e3d0463fa
+TestAdmin2, SM_17fbb0052c014b24a
+SQLAnalysis, SM_d3064df764d641768
+
+PS C:\temp\ScriptingGamesEvent1> Write-Host "Examining the history file."
+Examining the history file.
+
+PS C:\temp\ScriptingGamesEvent1> dir *.xml
+
+
+    Directory: C:\temp\ScriptingGamesEvent1
+
+
+Mode                LastWriteTime     Length Name                                                                      
+----                -------------     ------ ----                                                                      
+-a---         1/20/2014  11:58 AM     122406 history.xml                                                               
+
+
+PS C:\temp\ScriptingGamesEvent1> $history = Import-Clixml history.xml
+PS C:\temp\ScriptingGamesEvent1> $history
+
+Pairings                                                    DateTime                                                   
+--------                                                    --------                                                   
+{@{First=Jada; Second=SQLReporting}, @{First=Administrat... 1/20/2014 11:42:00 AM                                      
+{@{First=AdminGuy; Second=SM_3d1e6b134c564893b}, @{First... 1/20/2014 11:42:41 AM                                      
+{@{First=NonAdminGuy; Second=SM_40801c6ed3ee458ca}, @{Fi... 1/20/2014 11:43:35 AM                                      
+{@{First=dlwyatt; Second=TestAdmin1}, @{First=AdminGuy; ... 1/20/2014 11:50:53 AM                                      
+{@{First=AdminGuy; Second=SM_d3064df764d641768}, @{First... 1/20/2014 11:50:57 AM                                      
+{@{First=AdminGuy; Second=Guest}, @{First=dlwyatt; Secon... 1/20/2014 11:51:16 AM                                      
+{@{First=AdminGuy; Second=TestStaff1}, @{First=dlwyatt; ... 1/20/2014 11:56:42 AM                                      
+{@{First=dlwyatt; Second=SQLDBEngine}, @{First=AdminGuy;... 1/20/2014 11:58:03 AM                                      
+{@{First=AdminGuy; Second=SM_c725e7d7e3d0463fa}, @{First... 1/20/2014 11:58:05 AM                                      
+{@{First=AdminGuy; Second=SqlServerAgent}, @{First=dlwya... 1/20/2014 11:58:06 AM                                      
+{@{First=AdminGuy; Second=SQLAnalysis}, @{First=dlwyatt;... 1/20/2014 11:58:07 AM                                      
+{@{First=dlwyatt; Second=TestUser}, @{First=AdminGuy; Se... 1/20/2014 11:58:08 AM                                      
+
+
+PS C:\temp\ScriptingGamesEvent1> $history[-1].Pairings
+
+First                                                       Second                                                     
+-----                                                       ------                                                     
+dlwyatt                                                     TestUser                                                   
+AdminGuy                                                    SQLReporting                                               
+SqlServerAgent                                              SM_3d1e6b134c564893b                                       
+TestPupil2                                                  SM_40801c6ed3ee458ca                                       
+SM_c74c1dcf3a0a42269                                        SM_fa251eeb5a354144b                                       
+TestPupil1                                                  krbtgt                                                     
+Administrator                                               TestStaff1                                                 
+SQLDBEngine                                                 NonAdminGuy                                                
+CESService                                                  SM_3b60a5d7d21a44fc9                                       
+SM_2ebee0a2615043e3a                                        Guest                                                      
+TestAdmin1                                                  Jada                                                       
+Jada                                                        $E31000-TRS8GD51UOCP                                       
+TestStaff2                                                  WTF                                                        
+CayoTestAdmin                                               SM_c725e7d7e3d0463fa                                       
+TestAdmin2                                                  SM_17fbb0052c014b24a                                       
+SQLAnalysis                                                 SM_d3064df764d641768                                       
+
+
+PS C:\temp\ScriptingGamesEvent1> $history[-2].Pairings
+
+First                                                       Second                                                     
+-----                                                       ------                                                     
+AdminGuy                                                    SQLAnalysis                                                
+dlwyatt                                                     SM_d3064df764d641768                                       
+SM_17fbb0052c014b24a                                        SM_c74c1dcf3a0a42269                                       
+WTF                                                         SM_3d1e6b134c564893b                                       
+TestAdmin1                                                  TestAdmin2                                                 
+CESService                                                  SM_c725e7d7e3d0463fa                                       
+TestPupil1                                                  SM_3b60a5d7d21a44fc9                                       
+Jada                                                        SM_2ebee0a2615043e3a                                       
+Jada                                                        TestUser                                                   
+SQLReporting                                                krbtgt                                                     
+SM_40801c6ed3ee458ca                                        TestStaff1                                                 
+SqlServerAgent                                              SM_fa251eeb5a354144b                                       
+Administrator                                               SQLDBEngine                                                
+Guest                                                       TestStaff2                                                 
+CayoTestAdmin                                               NonAdminGuy                                                
+$E31000-TRS8GD51UOCP                                        TestPupil2                                                 
+
+
+PS C:\temp\ScriptingGamesEvent1> $participantsWithDuplicate = 'One','Two','Three','Four','Five','Six','Seven','Seven'
+PS C:\temp\ScriptingGamesEvent1> $participantsWithDuplicate | .\Get-ProjectManagerPairings.ps1
+
+Strings passed to the Name parameter must be unique.
+At C:\temp\ScriptingGamesEvent1\Get-ProjectManagerPairings.ps1:129 char:9
++         throw "Strings passed to the Name parameter must be unique."
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Strings passed ...must be unique.:String) [], RuntimeException
+    + FullyQualifiedErrorId : Strings passed to the Name parameter must be unique.
+ 
+PS C:\temp\ScriptingGamesEvent1> Stop-Transcript
+**********************
+Windows PowerShell transcript end
+End time: 20140120120002
+**********************

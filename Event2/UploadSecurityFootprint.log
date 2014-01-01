@@ -1,0 +1,41 @@
+Sat, 01 Feb 2014 09:42:49 GMT - [V] Loading script dependencies.
+Sat, 01 Feb 2014 09:42:49 GMT - [V] Importing function 'Compress-Folder'.
+Sat, 01 Feb 2014 09:42:49 GMT - [V] Importing function 'Get-EnvironmentVariableData'.
+Sat, 01 Feb 2014 09:42:49 GMT - [V] Importing function 'Get-FileData'.
+Sat, 01 Feb 2014 09:42:49 GMT - [V] Importing function 'Get-FolderData'.
+Sat, 01 Feb 2014 09:42:49 GMT - [V] Importing function 'Get-InnerException'.
+Sat, 01 Feb 2014 09:42:49 GMT - [V] Importing function 'Get-InstalledSoftwareData'.
+Sat, 01 Feb 2014 09:42:49 GMT - [V] Importing function 'Get-ProcessData'.
+Sat, 01 Feb 2014 09:42:49 GMT - [V] Importing function 'Get-RegistryData'.
+Sat, 01 Feb 2014 09:42:49 GMT - [V] Importing function 'Get-ServiceData'.
+Sat, 01 Feb 2014 09:42:49 GMT - [V] Importing function 'Get-SharedFolderData'.
+Sat, 01 Feb 2014 09:42:49 GMT - [V] Importing function 'New-TempFolder'.
+Sat, 01 Feb 2014 09:42:49 GMT - [V] Importing function 'Protect-File'.
+Sat, 01 Feb 2014 09:42:49 GMT - [V] Importing function 'Unprotect-File'.
+Sat, 01 Feb 2014 09:42:49 GMT - [V] Creating temporary folder.
+Sat, 01 Feb 2014 09:42:49 GMT - [V] XML files will be temporarily stored in folder 'C:\Users\dlwyatt\AppData\Local\Temp\qnxw2yo2.hqa'
+Sat, 01 Feb 2014 09:42:49 GMT - [V] Starting activity 'Collect folder information'...
+Sat, 01 Feb 2014 09:44:10 GMT - [V] Activity 'Collect folder information' complete.
+Sat, 01 Feb 2014 09:44:10 GMT - [V] Starting activity 'Collect file information'...
+Sat, 01 Feb 2014 09:44:56 GMT - [V] Activity 'Collect file information' complete.
+Sat, 01 Feb 2014 09:44:56 GMT - [V] Starting activity 'Collect shared folder information'...
+Sat, 01 Feb 2014 09:44:56 GMT - [V] Activity 'Collect shared folder information' complete.
+Sat, 01 Feb 2014 09:44:56 GMT - [V] Starting activity 'Collect running process information'...
+Sat, 01 Feb 2014 09:44:57 GMT - [V] Activity 'Collect running process information' complete.
+Sat, 01 Feb 2014 09:44:57 GMT - [V] Starting activity 'Collect Windows service information'...
+Sat, 01 Feb 2014 09:44:57 GMT - [V] Activity 'Collect Windows service information' complete.
+Sat, 01 Feb 2014 09:44:57 GMT - [V] Starting activity 'Collect environment variables'...
+Sat, 01 Feb 2014 09:44:57 GMT - [V] Activity 'Collect environment variables' complete.
+Sat, 01 Feb 2014 09:44:57 GMT - [V] Starting activity 'Collect registry information'...
+Sat, 01 Feb 2014 09:44:57 GMT - [V] Activity 'Collect registry information' complete.
+Sat, 01 Feb 2014 09:44:57 GMT - [V] Starting activity 'Collect list of installed software'...
+Sat, 01 Feb 2014 09:44:57 GMT - [V] Activity 'Collect list of installed software' complete.
+Sat, 01 Feb 2014 09:44:57 GMT - [V] Compressing, encrypting and uploading results...
+Sat, 01 Feb 2014 09:44:57 GMT - [V] Unencrypted zip file will be temporarily stored at 'C:\Users\dlwyatt\AppData\Local\Temp\tmp8FC0.tmp'.
+Sat, 01 Feb 2014 09:44:57 GMT - [V] Local copy of encrypted bin file will be temporarily stored at 'C:\Users\dlwyatt\AppData\Local\Temp\tmp8FC1.tmp'.
+Sat, 01 Feb 2014 09:44:58 GMT - [D] 
+Sat, 01 Feb 2014 09:44:58 GMT - [D]   Original XML files size        : 20294150
+Sat, 01 Feb 2014 09:44:58 GMT - [D]   Compressed file size           : 1122057
+Sat, 01 Feb 2014 09:44:58 GMT - [D]   Encrypted file size            : 1122622
+Sat, 01 Feb 2014 09:45:13 GMT - [V] Encrypted results successfully uploaded to '\\win2008vm\c$\temp\WIN2012VM-SecurityFootprint-2014_02_01_09_45_12.bin'.
+Sat, 01 Feb 2014 09:45:13 GMT - [V] Cleaning up local temp files.

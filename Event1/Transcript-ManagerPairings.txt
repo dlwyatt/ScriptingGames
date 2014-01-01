@@ -1,0 +1,196 @@
+**********************
+Windows PowerShell transcript start
+Start time: 20140123205216
+Username  : WYATT-PC\Dave 
+Machine	  : WYATT-PC (Microsoft Windows NT 6.1.7601 Service Pack 1) 
+**********************
+Transcript started, output file is Transcript-ManagerPairings.txt
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event1> $participants = 'Syed, Kim, Sam, Hazem, Pilar, Terry, Amy, Greg, Pamela, Julie, David, Robert, Shai, Ann, Mason, Sharon' -split '\s*,\s*'
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event1> $participants.Count
+16
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event1> $participants | .\Get-ManagerPairings.ps1
+Generated Pairings:
+
+Robert, Amy
+Ann, Pilar
+Terry, Syed
+Shai, Sam
+David, Mason
+Greg, Hazem
+Pamela, Kim
+Julie, Sharon
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event1> $participants | .\Get-ManagerPairings.ps1 -Verbose
+VERBOSE: Importing function 'Get-CallerPreference'.
+VERBOSE: Importing function 'Get-EmailAddress'.
+VERBOSE: Importing function 'Get-Pairing'.
+VERBOSE: Generating pairings...
+VERBOSE: Trying pairing:  David, Sharon
+VERBOSE: Trying pairing:  Kim, Shai
+VERBOSE: Trying pairing:  Terry, Syed
+VERBOSE: Trying pairing:  Ann, Amy
+VERBOSE: Trying pairing:  Pilar, Robert
+VERBOSE: Trying pairing:  Julie, Greg
+VERBOSE: Trying pairing:  Mason, Hazem
+VERBOSE: Trying pairing:  Sam, Pamela
+VERBOSE: Pairing successful: Sam, Pamela
+VERBOSE: Pairing successful: Mason, Hazem
+VERBOSE: Pairing successful: Julie, Greg
+VERBOSE: Pairing successful: Pilar, Robert
+VERBOSE: Pairing successful: Ann, Amy
+VERBOSE: Pairing successful: Terry, Syed
+VERBOSE: Pairing successful: Kim, Shai
+VERBOSE: Pairing successful: David, Sharon
+Generated Pairings:
+
+David, Sharon
+Kim, Shai
+Terry, Syed
+Ann, Amy
+Pilar, Robert
+Julie, Greg
+Mason, Hazem
+Sam, Pamela
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event1> $participants += 'One Extra Person'
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event1> $participants | .\Get-ManagerPairings.ps1
+WARNING: An odd number of people were entered.
+
+Names:
+
+  0: Syed
+  1: Kim
+  2: Sam
+  3: Hazem
+  4: Pilar
+  5: Terry
+  6: Amy
+  7: Greg
+  8: Pamela
+  9: Julie
+ 10: David
+ 11: Robert
+ 12: Shai
+ 13: Ann
+ 14: Mason
+ 15: Sharon
+ 16: One Extra Person
+
+Please type the number of the person you wish to be paired twice.
+To abort the script, press Enter without typing anything.
+Enter a number: 6
+Generated Pairings:
+
+Shai, Terry
+Mason, Sam
+Syed, Hazem
+One Extra Person, Sharon
+Pamela, Pilar
+Robert, Greg
+Julie, Ann
+Amy, Kim
+Amy, David
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event1> $participants = 'Syed, Kim, Sam, Hazem, Pilar, Terry, Amy, Greg, Pamela, Julie, David, Robert, Shai, Ann, Mason, Sharon' -split '\s*,\s*'
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event1> $participants | .\Get-ManagerPairings.ps1 -SaveAsType Csv
+Generated Pairings:
+
+Sharon, Robert
+Ann, Greg
+Terry, Kim
+Mason, Sam
+Shai, David
+Julie, Syed
+Pamela, Pilar
+Hazem, Amy
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event1> dir *.csv
+
+
+    Directory: C:\Users\Dave\Documents\GitHub\ScriptingGames\Event1
+
+
+Mode                LastWriteTime     Length Name                                                                      
+----                -------------     ------ ----                                                                      
+-a---         1/23/2014   8:54 PM        160 Pairings Created On 1-23-2014 At 8.54 PM.Csv                              
+
+
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event1> import-csv '.\Pairings Created On 1-23-2014 At 8.54 PM.Csv'
+
+First Person                                                Second Person                                              
+------------                                                -------------                                              
+Sharon                                                      Robert                                                     
+Ann                                                         Greg                                                       
+Terry                                                       Kim                                                        
+Mason                                                       Sam                                                        
+Shai                                                        David                                                      
+Julie                                                       Syed                                                       
+Pamela                                                      Pilar                                                      
+Hazem                                                       Amy                                                        
+
+
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event1> $participants | .\Get-ManagerPairings.ps1 -SaveAsType Txt
+Generated Pairings:
+
+Hazem, Amy
+Pilar, Mason
+Pamela, Syed
+Robert, Julie
+Sam, Greg
+Terry, Sharon
+Ann, David
+Kim, Shai
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event1> dir *.txt
+
+
+    Directory: C:\Users\Dave\Documents\GitHub\ScriptingGames\Event1
+
+
+Mode                LastWriteTime     Length Name                                                                      
+----                -------------     ------ ----                                                                      
+-a---         1/23/2014   8:55 PM        256 Pairings Created On 1-23-2014 At 8.55 PM.Txt                              
+-a---         1/23/2014   8:55 PM      11194 Transcript-ManagerPairings.txt                                            
+-a---         1/20/2014  12:04 PM      18976 Transcript-ProjectManagerPairings.txt                                     
+
+
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event1> gc '.\Pairings Created On 1-23-2014 At 8.55 PM.Txt'
+Generated Pairings:
+
+Hazem, Amy
+Pilar, Mason
+Pamela, Syed
+Robert, Julie
+Sam, Greg
+Terry, Sharon
+Ann, David
+Kim, Shai
+
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event1> $participants += 'Sharon'
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event1> $participants
+Syed
+Kim
+Sam
+Hazem
+Pilar
+Terry
+Amy
+Greg
+Pamela
+Julie
+David
+Robert
+Shai
+Ann
+Mason
+Sharon
+Sharon
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event1> $participants | .\Get-ManagerPairings.ps1
+A duplicate name was found in the input list. Please ensure all names are unique and try again.
+At C:\Users\Dave\Documents\GitHub\ScriptingGames\Event1\Get-ManagerPairings.ps1:89 char:9
++         throw 'A duplicate name was found in the input list. Please ensure all n ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (A duplicate nam... and try again.:String) [], RuntimeException
+    + FullyQualifiedErrorId : A duplicate name was found in the input list. Please ensure all names are unique and try 
+    again.
+
+PS C:\Users\Dave\Documents\GitHub\ScriptingGames\Event1> Stop-Transcript
+**********************
+Windows PowerShell transcript end
+End time: 20140123205537
+**********************
